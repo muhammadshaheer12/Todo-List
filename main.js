@@ -42,7 +42,7 @@ while (condition) {
             todolist.splice(index, 1);
             console.log(todolist);
         }
-        if (todolistanswer.todolist === "estimate odo") {
+        if (todolistanswer.todolist === "estimate todo") {
             console.log(todolist);
         }
         if (todolistanswer.todolist === "quit") {
