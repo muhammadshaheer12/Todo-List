@@ -1,5 +1,5 @@
 #! /usr/bin/env node
-import inquirer from "inquirer"
+import inquirer from "inquirer";
 import chalk from "chalk";
 console.log(chalk.bgMagenta("welcome to my todo list app"));
 let todolist: string[] = [];
