@@ -2,19 +2,19 @@
 import inquirer from "inquirer";
 import chalk from "chalk";
 console.log(chalk.bgMagenta("welcome to my todo list app"));
-let todolist = [];
+let todolist = ["iftar", "namaz", "coding", "sleep"];
 let condition = true;
 while (condition) {
     let todolistanswer = await inquirer.prompt([
         {
-            name: "todolist",
+            name: "todo",
             type: "list",
-            message: "what do you want to do?",
-            choices: ["add todo", "cancel todo", "estimate todo", "quit"]
+            message: "what do you want to add in your todos?",
+            choices: ["add", "delete", "update", "read"]
         }
     ]);
-    if (todolistanswer.todolist === "add todo") {
-        let addtodolist = await inquirer.prompt([
+    if (todolistanswer.todo === "add") {
+        let addtodo = await inquirer.prompt([
             {
                 name: "todo",
                 type: "input",
@@ -23,34 +23,34 @@ while (condition) {
             {
                 name: "addmore",
                 type: "confirm",
-                message: "do you want to add more?",
+                message: "do you want to add more in your todos?",
                 default: "false",
             }
         ]);
-        todolist.push(addtodolist.todo);
-        condition = addtodolist.addmore;
+        todolist.push(addtodo.todo);
+        condition = addtodo.addmore;
         console.log(todolist);
-        if (todolistanswer.todolist === "cancel todo") {
-            let canceltodolist = await inquirer.prompt([
-                {
-                    name: "todo",
-                    type: "input",
-                    message: "select your todo",
-                }
-            ]);
-            let index = todolist.indexOf(canceltodolist.todo);
-            todolist.splice(index, 1);
-            console.log(todolist);
-        }
-        if (todolistanswer.todolist === "estimate todo") {
-            console.log(todolist);
-        }
-        if (todolistanswer.todolist === "quit") {
-            console.log(todolist);
-        }
+    }
+    else if (todolistanswer.todo === "delete") {
+        let deletetodo = await inquirer.prompt([
+            {
+                name: "todo",
+                type: "input",
+                message: "select your todo",
+            }
+        ]);
+        let index = todolist.indexOf(deletetodo.todo);
+        todolist.splice(index, 1);
+        console.log(todolist);
+    }
+    else if (todolistanswer.todo === "update") {
+        console.log(todolist);
+    }
+    else if (todolistanswer.todo === "read") {
+        console.log(todolist);
     }
     else {
-        console.log("todo not found");
+        console.log("exiting todolist");
         condition = false;
     }
 }
