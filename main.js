@@ -10,7 +10,7 @@ while (condition) {
             name: "todo",
             type: "list",
             message: "what do you want to add in your todos?",
-            choices: ["add", "delete", "update", "read"]
+            choices: ["add", "delete", "update", "read"],
         }
     ]);
     if (todolistanswer.todo === "add") {
