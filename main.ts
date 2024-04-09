@@ -2,7 +2,7 @@
 import inquirer from "inquirer";
 import chalk from "chalk";
 console.log(chalk.bgMagenta("welcome to my todo list app"));
-let todolist = ["iftar", "namaz", "coding", "sleep"];
+let todolist = [];
 let condition = true;
 while (condition) {
     let todolistanswer = await inquirer.prompt(
