@@ -2,9 +2,9 @@
 import inquirer from "inquirer";
 import chalk from "chalk";
 console.log(chalk.bgMagenta("welcome to my todo list app"));
-let todolist = [];
-let condition = true;
-while (condition) {
+let todolist: string[] = [];
+let todo: boolean = true;
+while (todo) {
     let todolistanswer = await inquirer.prompt(
         [
             {
@@ -31,8 +31,8 @@ while (condition) {
                 }
             ]
         );
-        todolist.push(addtodo.todo)
-        condition = addtodo.addmore;
+        todolist.push(addtodo.todo)  
+        todo = addtodo.addmore;
         console.log(todolist);
     }
     else if (todolistanswer.todo === "delete") {
@@ -56,7 +56,7 @@ while (condition) {
          console.log(todolist);
     }
     else {
-        console.log("exiting todolist");
-        condition = false;
+        console.log("exiting todolist"); 
+        todo = false;
     }
 }
