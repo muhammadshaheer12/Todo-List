@@ -2,23 +2,23 @@
 import inquirer from "inquirer";
 import chalk from "chalk";
 console.log(chalk.bgMagenta("welcome to my todo list app"));
-let todolist = [];
+let todos = [];
 let todo = true;
 while (todo) {
-    let todolistanswer = await inquirer.prompt([
+    let todoans = await inquirer.prompt([
         {
             name: "todo",
             type: "list",
             message: "what do you want to add in your todos?",
-            choices: ["add", "delete", "update", "read"],
+            choices: ["add", "delete", "update", "read", "exit"],
         }
     ]);
-    if (todolistanswer.todo === "add") {
-        let addtodo = await inquirer.prompt([
+    if (todoans.todo === "add") {
+        let addans = await inquirer.prompt([
             {
-                name: "todo",
+                name: "add",
                 type: "input",
-                message: "select your todo",
+                message: "enter your todo",
             },
             {
                 name: "addmore",
@@ -27,30 +27,31 @@ while (todo) {
                 default: "false",
             }
         ]);
-        todolist.push(addtodo.todo);
-        todo = addtodo.addmore;
-        console.log(todolist);
+        todos.push(addans.add);
+        todo = addans.addmore;
+        console.log(todos);
     }
-    else if (todolistanswer.todo === "delete") {
-        let deletetodo = await inquirer.prompt([
+    else if (todoans.todo === "delete") {
+        let deleteans = await inquirer.prompt([
             {
-                name: "todo",
-                type: "input",
-                message: "select your todo",
+                name: "delete",
+                type: "list",
+                message: "select the todo you want to delete",
+                choices: todos,
             }
         ]);
-        let index = todolist.indexOf(deletetodo.todo);
-        todolist.splice(index, 1);
-        console.log(todolist);
+        let index = todos.indexOf(deleteans.delete);
+        todos.splice(index, 1);
+        console.log(todos);
     }
-    else if (todolistanswer.todo === "update") {
-        console.log(todolist);
+    else if (todoans.todo === "update") {
+        console.log(todos);
     }
-    else if (todolistanswer.todo === "read") {
-        console.log(todolist);
+    else if (todoans.todo === "read") {
+        console.log(todos);
     }
     else {
-        console.log("exiting todolist");
+        console.log("exit todo list app");
         todo = false;
     }
 }
